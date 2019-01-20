@@ -37,8 +37,9 @@ elif defined(android):
   switch("arm.linux.clang.compilerexe", arch & "-linux-androideabi-clang")
   switch("arm.linux.clang.linkerexe", arch & "-linux-androideabi-clang")
 elif defined(windows):
-  assert(sizeof(int) == 8)
-  switch("cc", "vcc")
+  assert(sizeof(int) == 4)
+  switch("cc", "gcc")
+  switch("passL", "-static-libgcc")
 elif defined(linux):
   switch("passC", "-fPIC")
 else:
